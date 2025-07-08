@@ -1,9 +1,12 @@
 <?php
-$nombre = "Nicolas";
-$apellido = "Muskus";
-$skills = ["git","Mysql","php"];
-$contrasena_usuario = "admin";
-$es_valida = false;
+    $nombre = "Nicolas";
+    $apellido = "Muskus";
+    $edad = 17;
+
+    $skills = ["git","Mysql","php"];
+
+    $contrasena_usuario = "admin";
+    $es_valida = false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +17,7 @@ $es_valida = false;
 </head>
 <body>
     <h1><?php echo "Hola"; ?> Camper </h1>
-    <h2><?php echo $nombre; echo " "; echo $apellido; ?></h2>
+    <h2><?php echo $nombre; echo " "; echo $apellido; echo " ";echo $edad;?></h2>
     <h2>Skills:</h2>
     <ul>
         <li><?php echo"Git";?></li>
