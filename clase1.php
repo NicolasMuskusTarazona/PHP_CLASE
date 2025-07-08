@@ -125,5 +125,23 @@ $camper = [
     <?php
     MensajeNombreApellidoEdadSkillsCamper($camper);
     ?>
+    <!-- Forma facil con CSS  -->
+    <?php foreach ($camper as $campers): ?>
+    <div class="card">
+        <h2><?= $campers['nombre'] . " " . $campers['apellido']; ?></h2>
+        <p>Edad: <?= $campers['edad']; ?></p>
+        <p>Grupo: <?= $campers['grupo']; ?></p>
+        <p>Score General: <?= $campers['score']; ?></p>
+        <ul>
+            <?php foreach ($campers['skilss'] as $skill): ?>
+                <li>
+                    <?= $skill['nombre']; ?> - Score: <?= $skill['score']; ?> -
+                    Matriculado: <?= $skill['matriculado'] ? 'Sí' : 'No'; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endforeach; ?>
+
 </body>
 </html>
