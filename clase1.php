@@ -33,7 +33,7 @@ $camper = [
     [
         "nombre" => "Darwin",
         "apellido" => "Machuca",
-        "edad" => 17,
+        "edad" => 19,
         "grupo" => "A1",
         "skilss" => [
             [
@@ -73,7 +73,7 @@ $camper = [
 <body>
     <h1>Camper</h1>
     <div>
-        <h2><?php echo "$title"; ?></h2>
+        <h2><?= "$title"; ?></h2>
         <br>
 
         <!-- Espacio BR -->
@@ -91,7 +91,7 @@ $camper = [
     <div>
 
         <!-- Nombre en mayusculas y Apellido en minusculas -->
-        <h2><?php echo strtoupper($campers['nombre']), " ", strtolower($campers['apellido']);?></h2>
+        <h2><?= strtoupper($campers['nombre']), " ", strtolower($campers['apellido']);?></h2>
         <br>
         <!--La linea de php tiene que tener -> {} -->
         <!-- <h2 style="color: red ">< echo "Nombre del camper: {$camper[1]['nombre']}";?></h2> -->
@@ -103,6 +103,11 @@ $camper = [
     <?php
     foreach ($camper as $campers) {
     echo "<h2>{$campers['nombre']} {$campers['apellido']}</h2>";
+    if($campers['edad'] > 18){
+        echo "<h3>Viejo : {$campers['edad']}</h3>";
+    }else{
+        echo "<h3>Menor de edad: {$campers['edad']}</h3>";
+    }
     echo "<ul>";
     foreach ($campers['skilss'] as $skill) {
         echo "<li>{$skill['nombre']} - Score: {$skill['score']} - Matriculado: " . ($skill['matriculado'] ? 'Si' : 'No') . "</li>";
