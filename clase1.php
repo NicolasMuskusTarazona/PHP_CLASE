@@ -91,7 +91,7 @@ $camper = [
     <div>
 
         <!-- Nombre en mayusculas y Apellido en minusculas -->
-        <h2><?= strtoupper($campers['nombre']), " ", strtolower($campers['apellido']);?></h2>
+        <!-- <h2><?= strtoupper($campers['nombre']), " ", strtolower($campers['apellido']);?></h2> -->
         <br>
         <!--La linea de php tiene que tener -> {} -->
         <!-- <h2 style="color: red ">< echo "Nombre del camper: {$camper[1]['nombre']}";?></h2> -->
@@ -99,21 +99,31 @@ $camper = [
     <?php
         }
     ?>
-
     <?php
-    foreach ($camper as $campers) {
-    echo "<h2>{$campers['nombre']} {$campers['apellido']}</h2>";
-    if($campers['edad'] > 18){
-        echo "<h3>Viejo : {$campers['edad']}</h3>";
-    }else{
-        echo "<h3>Menor de edad: {$campers['edad']}</h3>";
+    function MensajeNombreApellidoEdadSkillsCamper($camper){
+        foreach ($camper as $campers) {
+            echo "<h2>{$campers['nombre']} {$campers['apellido']}</h2>";
+            $CamperMayor18 = $campers['edad'] > 18;
+            $MensajeMenorEdad = "<h3>Menor edad : {$campers['edad']} <br> Grupo: {$campers['grupo']}</h3>";
+            $MensajeMayorEdad = "<h3>Mayor edad : {$campers['edad']} <br> Grupo: {$campers['grupo']}</h3>";
+            if($CamperMayor18){
+                echo $MensajeMayorEdad;
+            } else {
+                echo $MensajeMenorEdad;
+            }
+            SkillsCamper($campers);
+        }
     }
-    echo "<ul>";
-    foreach ($campers['skilss'] as $skill) {
-        echo "<li>{$skill['nombre']} - Score: {$skill['score']} - Matriculado: " . ($skill['matriculado'] ? 'Si' : 'No') . "</li>";
+    function SkillsCamper($campers){
+        echo "<ul>";
+        foreach ($campers['skilss'] as $skill) {
+            echo "<li>{$skill['nombre']} - Score: {$skill['score']} - Matriculado: " . ($skill['matriculado'] ? 'Si' : 'No') . "</li>";
+        }
+        echo "</ul><hr>";
     }
-    echo "</ul><hr>";
-    }
+    ?>
+    <?php
+    MensajeNombreApellidoEdadSkillsCamper($camper);
     ?>
 </body>
 </html>
