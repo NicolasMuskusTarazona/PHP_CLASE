@@ -17,4 +17,3 @@ services:
       MYSQL_DATABASE: php_pdo
 volumes:
   mysql-pdo-data:
-  
