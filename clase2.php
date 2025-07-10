@@ -120,7 +120,14 @@ $rango1 = range(1, 10);
 print_r($rango1) . "\n";
 
 $rango2 = range(0, 10, 2);
-print_r($rango2);
+print_r($rango2) . "\n";
 
 $rango3 = range('a', 'f');
-print_r($rango3);
+print_r($rango3) . "\n";
+
+$d = [];
+for ($i = 0; $i <= 5; $i++) {
+    $d[$i] = $i * $i;
+}
+
+echo $d[5] . "\n" ;
