@@ -50,7 +50,7 @@ function mostrarCamper(array $tarea): array
 
 $response =[];
 foreach($tareas as $tarea){
-    $response[] = mostrarTarea($tarea);
+    $response[] = mostrarCamper($tarea,$filter);
 }
 
 ?>
