@@ -112,3 +112,15 @@ $t = 50; // Aqui puedes intentarlo
 if ($d == 100 xor $t == 20) {
     echo "Una condicion es verdadera XOR"  . "\n"; // Intenta con cambiar " t = 20 " y vcerficaras que no imprimira nada
 }
+
+
+// Rangos de Numeros 
+
+$rango1 = range(1, 10);
+print_r($rango1) . "\n";
+
+$rango2 = range(0, 10, 2);
+print_r($rango2);
+
+$rango3 = range('a', 'f');
+print_r($rango3);
