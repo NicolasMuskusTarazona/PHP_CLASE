@@ -1,11 +1,48 @@
 <?php
-include_once "src/config.php";
+include_once "config.php";
 
-echo DB_USER;
+$conexion = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
-try{
-    $pdo = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, DB_PASS);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}catch(PDOException $e){
-    die(json_encode(['error' => $e->getMessage()]));
+if($conexion->connect_error){
+    die("Conexion no establecida" . $conexion ->connect_error);
+}
+
+
+header("Content-Type: application/json");
+
+$metodo = $_SERVER['REQUEST_METHOD'];
+
+print_r($metodo);
+
+
+switch ($metodo) {
+    case 'GET':
+        echo " Consulta de registro - GET";
+        consultaSelect($conexion);
+        break;
+    case 'POST':
+        echo " Consulta de registros - POST";
+        break;
+    case 'PUT':
+        echo " Consulta de registros - PUT";
+        break;
+    case 'DELETE':
+        echo " Consulta de registros - DELETE";
+        break;
+    default:
+        echo "Metodo no permitido ";
+        break;
+}
+
+function consultaSelect($conexion){
+    $sql = "SELECT * FROM products";
+    $resultado = $conexion->query($sql);
+
+    if($resultado){
+        $datos = array();
+        while($fila = $resultado->fetch_assoc()){
+            $datos[]=$fila;
+        }
+        echo json_encode($datos);
+    }
 }
