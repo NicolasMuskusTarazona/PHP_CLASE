@@ -1,29 +1,10 @@
 <?php
-    $nombre = "Nicolas";
-    $apellido = "Muskus";
-    $edad = 17;
+require_once "src/db.php";
 
-    $skills = ["git","Mysql","php"];
+$method = $_SERVER['REQUEST_METHOD'];
 
-    $contrasena_usuario = "admin";
-    $es_valida = false;
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=h1, initial-scale=1.0">
-    <title>Welcome to PHP</title>
-</head>
-<body>
-    <h1><?php echo "Hola"; ?> Camper </h1>
-    <h2><?php echo $nombre; echo " "; echo $apellido; echo " ";echo $edad;?></h2>
-    <h2>Skills:</h2>
-    <ul>
-        <li><?php echo"Git";?></li>
-        <li><?php echo"PHP";?></li>
-        <li><?php echo"MySQL";?></li>
-        <li><?php printf("Skill nivel 1: %s", $skills[0]);?></li>
-    </ul>
-</body>
-</html>
+
+// localhost:8081 /?filter=datos
+$uri = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
+
+echo json_encode($uri);
