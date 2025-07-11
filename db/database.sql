@@ -30,3 +30,6 @@ INSERT INTO products (name, price) VALUES
 ('Router Wi-Fi 6 TP-Link', 300.00),
 ('Cable HDMI 2.1 2m', 35.50),
 ('Soporte de Monitor Ajustable', 160.00);
+
+
+SELECT * FROM products;
