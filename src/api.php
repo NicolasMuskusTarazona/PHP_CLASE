@@ -52,6 +52,15 @@ switch ($method) {
             $id,
         ]);
         echo json_encode($data);
+    case 'DELETE':
+        $sql = "DELETE FROM products WHERE id = $id";
+        $resultado = $pdo->query($sql);
+    
+        if ($resultado) {
+            echo json_encode(array("mensaje" => "Producto eliminado"));
+        } else {
+            echo json_encode(array("error" => "No se pudo eliminar el producto"));
+        }
     default:
         break;
 }
