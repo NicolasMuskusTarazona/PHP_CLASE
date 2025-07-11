@@ -52,15 +52,33 @@ switch ($method) {
             $id,
         ]);
         echo json_encode($data);
-    case 'DELETE':
-        $sql = "DELETE FROM products WHERE id = $id";
-        $resultado = $pdo->query($sql);
-    
-        if ($resultado) {
-            echo json_encode(array("mensaje" => "Producto eliminado"));
-        } else {
-            echo json_encode(array("error" => "No se pudo eliminar el producto"));
-        }
+        case 'DELETE':
+            if (!$id) {
+                http_response_code(400);
+                echo json_encode([
+                    'error' => 'ID no encontrado',
+                    'code' => 400,
+                    'errorUrl' => 'https://http.cat/400'
+                ]);
+                exit;
+            }
+            $stmt = $pdo->prepare("SELECT * FROM products WHERE id = ?");
+            $stmt->execute([$id]);
+            $product = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            if (!$product) {
+                http_response_code(404);
+                echo json_encode([
+                    'error' => 'Producto no encontrado',
+                    'code' => 404,
+                    'errorUrl' => 'https://http.cat/404'
+                ]);
+                exit;
+            }
+            $stmt = $pdo->prepare("DELETE FROM products WHERE id = ?");
+            $stmt->execute([$id]);
+            echo json_encode($product);
+            break;
     default:
         break;
 }
