@@ -1,7 +1,23 @@
 <?php
 
 require_once "src/db.php";
+require_once "models/clase5.php";
+require_once "models/clase5_2.php";
 
+$persona = new Person('Nicolas Muskus',17,'984121','CC');
+
+$camper = new Camper('Nicolas','984121',17);
+
+
+function ingresarZonaFranca(Person $persona){
+    echo "Ingreso la persona:  {$persona->getNombre()}";
+}
+
+ingresarZonaFranca($persona);
+ingresarZonaFranca($camper);
+
+exit;
+// ----- API ----
 $method = $_SERVER['REQUEST_METHOD'];
 
 
