@@ -1,20 +1,28 @@
 <?php
+// clase5.php
 
-include_once 'clase5_2.php';
+include_once 'Person.php';
+
 // Programacion Orientada a Objetos
 
-class Camper extends Person{
+class Camper extends Person implements Asistencia{
+    public int $skillProgramacion = 0;
+    public int $skillIngles = 0;
 
-    public int $nivelIngles = 0;
-
-    public function __construct(string $nombre,string $documento,int $edad, int $nivel = 0)
+    public function __construct(string $nombre,string $documento,int $edad,string $tipoDocumento, int $skillIngles, int $skillProgramacion)
     {
-        $this->documento = $documento;
-        $this->setEdad($edad);
-        $this->setNombre($nombre);
-        $this->nivelIngles = $nivel;
-        echo "Hola desde el Constructor<br>";
+        parent::__construct(0,$nombre,$edad,$documento, $tipoDocumento);
+        $this->skillIngles = $skillIngles;
+        $this->skillProgramacion = $skillProgramacion;
     }
+
+    public function MarcarIngreso(string $metodo) : string{
+        return "{$this->nombre} marco el Ingreso con {$metodo}";
+    }
+    public function MarcarSalida(string $metodo) : string{
+        return "{$this->nombre} marco la Salida con {$metodo}";
+    }
+
 
     public function MarcarAsistencia(){}
 

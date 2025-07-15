@@ -1,8 +1,8 @@
 <?php
 
-class Person{
+abstract class Person implements Asistencia{
     public string $nombre;
-    private int $edad;
+    public int $edad;
     protected string $documento;
     protected string $tipoDocumento;
 
@@ -12,6 +12,14 @@ class Person{
         $this->documento = $documento;
         $this->tipoDocumento = $tipoDocumento;
     }
+
+    public function MarcarIngreso(string $metodo) : string{
+        return "{$this->nombre} marco el Ingreso con {$metodo}";
+    }
+    public function MarcarSalida(string $metodo) : string{
+        return "{$this->nombre} marco la Salida con {$metodo}";
+    }
+    
     public function setNombre(string $nombre): void{
         $this->nombre = htmlspecialchars(trim($nombre));
     }
