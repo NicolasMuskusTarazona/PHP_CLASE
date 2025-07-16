@@ -1,7 +1,6 @@
 <?php
 
-require_once "src/db.php";
-require_once "models/route.php";
+require_once "route.php";
 
 
 
