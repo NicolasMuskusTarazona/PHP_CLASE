@@ -1,2 +1,2 @@
-<?php 
-require_once "./src/api.php";
+<?php
+require_once "src/api.php";

@@ -1,5 +1,6 @@
 <?php
 
-abstract class CrudController{
+abstract class CrudController
+{
     static public array $dispatch = [];
 }

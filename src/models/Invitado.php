@@ -1,9 +1,9 @@
 <?php
-// clase6.php
 
-include_once('Person.php');
+include_once "Persona.php";
 
-class Invitado extends Person{
+class Invitado extends Persona
+{
     private string $nombreInvito;
     private string $nombreAutorizo;
 
@@ -14,22 +14,25 @@ class Invitado extends Person{
         string $documento,
         string $tipo,
         string $nombreInvito,
-        string $nombreAutorizo
-    ){
-        parent::__construct($id,$nombre,$edad,$documento,$tipo);
+        string $nombreAutorizo,
+    ) {
+        parent::__construct($id, $nombre, $edad, $documento, $tipo);
         $this->nombreInvito = $nombreInvito;
         $this->nombreAutorizo = $nombreAutorizo;
     }
 
-    public function esMayor() : bool {
-        return $this->esMayor();
+    public function esMayor(): bool
+    {
+        return $this->edad >= 18;
     }
 
-    public function getNombreAutorizo() : string {
+    public function getNombreDeQuienAutorizo(): string
+    {
         return $this->nombreAutorizo;
     }
 
-    public function getNombreInvito() : string {
+    public function getNombreDeQuienInvito(): string
+    {
         return $this->nombreInvito;
     }
 }

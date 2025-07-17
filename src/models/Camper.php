@@ -1,58 +1,73 @@
 <?php
-// clase5.php
 
-include_once 'Person.php';
+include_once "Persona.php";
+include_once "Asistencia.php";
 
-// Programacion Orientada a Objetos
-
-class Camper extends Person implements Asistencia{
-    public int $skillProgramacion = 0;
+class Camper extends Persona implements Asistencia
+{
     public int $skillIngles = 0;
+    public int $skillProgramacion = 0;
 
-    public function __construct(string $nombre,string $documento,int $edad,string $tipoDocumento, int $skillIngles, int $skillProgramacion)
+    /**
+     * Logica para crear un Camper
+     * @param string $nombre Define el nombre del Camper sin la logica de la validacion de 20 caracteres
+     * @param string $documento Documento del camper
+     * @param int $edad Edad del camper representado en valores enteros
+     */
+    public function __construct(string $nombre, string $documento, int $edad, string $tipoDocumento, int $skillIngles = 0, int $skillProgramacion = 0)
     {
-        parent::__construct(0,$nombre,$edad,$documento, $tipoDocumento);
+        parent::__construct(0, $nombre, $edad, $documento, $tipoDocumento); // Siempre necesario....
         $this->skillIngles = $skillIngles;
         $this->skillProgramacion = $skillProgramacion;
     }
 
-    public function MarcarIngreso(string $metodo) : string{
+    public function MarcarIngreso(string $metodo): string
+    {
         return "{$this->nombre} marco el Ingreso con {$metodo}";
     }
-    public function MarcarSalida(string $metodo) : string{
-        return "{$this->nombre} marco la Salida con {$metodo}";
+
+    public function MarcarSalida(string $metodo): string
+    {
+        return "{$this->nombre} marco Salida con {$metodo}";
+    }
+
+    private function marcarAsistencia() {}
+
+    public function esMayor(): bool
+    {
+        return $this->edad >= 18;
     }
 
 
-    public function MarcarAsistencia(){}
+    /**
+     * Asignar el nombre del Camper, validando que cumpla con el minimo de 5 caracteres.....
+     * @param string $nombre Define el nuevo nombre del Camper
+     */
 
-    public function MayorEdad() : bool {
-        return $this->getEdad()>=18;
-    }
-
-    public function ActualizarNombre(string $nombre): void{
-        $this->nombre = $nombre;
-    }
-
-    public function setNombre(string $nombre) : void {
-        if(strlen($nombre)){
-            $this->setNombre(htmlspecialchars(trim($nombre)));            
-        }else{
-            echo "Error al Asignar el nombre al Camper";
+    #[Override]
+    public function setNombre(string $nombre): void
+    {
+        if (strlen($nombre) >= 5) {
+            $this->nombre = $nombre;
+        } else {
+            echo 'Error al asignar el nombre al Camper';
         }
     }
 
-    public function getNombre() : string {
-        return $this->getNombre();
+    public function getNombre(): string
+    {
+        return "__" . strtoupper(parent::getNombre()) . "__";
     }
 
-    public function getDocumento(): string
+    public function getInfoDocumento(): string
     {
-        return "{$this->tipoDocumento} : {$this->documento}";
+        return "{$this->getTipoDocumento()} : {$this->getDocumento()}";
     }
-    public function informacion() : array {
+
+    public function informacion(): array
+    {
         return [
-            'nombre' => $this -> nombre ?? 'NN', 
+            'nombre' => $this->nombre ?? 'NN',
             'edad' => $this->edad ?? 0,
             'documento' => $this->documento ?? 'NN',
             'tipoDocumento' => $this->tipoDocumento

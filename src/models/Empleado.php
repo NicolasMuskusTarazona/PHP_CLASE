@@ -1,11 +1,11 @@
 <?php
-// clase6_2.php
 
-include_once 'Person.php';
+include_once "Persona.php";
 
-class Empleado extends Person{
+class Empleado extends Persona implements Asistencia
+{
     private string $cargo;
-    private int $sueldo;
+    private int $sueldo; // $$
 
     public function __construct(
         int $id,
@@ -14,15 +14,26 @@ class Empleado extends Person{
         string $documento,
         string $tipo,
         string $cargo,
-        int $sueldo
-    ){
-        parent::__construct($id,$nombre,$edad,$documento,$tipo);
-        $this->sueldo = $sueldo;
+        int $sueldoRemunerado,
+    ) {
+        parent::__construct($id, $nombre, $edad, $documento, $tipo);
+        $this->sueldo = $sueldoRemunerado;
         $this->cargo = $cargo;
-
     }
-    public function esMayor(): bool{
-        return $this->edad >=18;
+
+    public function MarcarIngreso(string $metodo): string
+    {
+        return "El empleado: {$this->nombre} marco el Ingreso con {$metodo}";
+    }
+
+    public function MarcarSalida(string $metodo): string
+    {
+        return "El empleado: {$this->nombre} marco Salida con {$metodo}";
+    }
+
+    public function esMayor(): bool
+    {
+        return $this->edad >= 18;
     }
 
     public function getSueldo(): int
@@ -30,7 +41,8 @@ class Empleado extends Person{
         return $this->sueldo;
     }
 
-    public function getCargo() : string {
+    public function getCargo(): string
+    {
         return $this->cargo;
     }
 }
