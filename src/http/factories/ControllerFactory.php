@@ -3,7 +3,8 @@
 include_once "src/http/controllers/CrudController.php";
 include_once "src/http/controllers/ProductoController.php";
 include_once "src/http/controllers/CamperController.php";
-
+include_once "src/repositories/CamperRepository.php";
+include_once "src/core/DatabasePDO.php";
 
 class ControllerFactory
 {
@@ -16,7 +17,8 @@ class ControllerFactory
             case 'producto':
                 return new ProductoController();
             case 'camper':
-                return new CamperController();
+                $repository = new CamperRepository(DatabasePDO::getConnection());
+                return new CamperController($repository);
             default:
                 http_response_code(404);
                 echo json_encode(['error' => 'Recurso no encontrado', 'code' => 404, 'errorUrl' => 'https://http.cat/404']);

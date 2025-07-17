@@ -38,6 +38,10 @@ class Route
             exit;
         }
 
-        $controller->$funcion();
+        $data = file_get_contents('php://input', true)?
+        json_encode(file_get_contents('php://input', true)):
+        [];
+
+        $controller->$funcion(["params" => $this->parametros,"data" => $data]);
     }
 }
