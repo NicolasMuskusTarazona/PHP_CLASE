@@ -37,11 +37,16 @@ class Route
             echo json_encode(['error' => 'Metodo no implementado', 'code' => 501, 'errorUrl' => 'https://http.cat/501']);
             exit;
         }
+        //localhost:8081/camper/123/reporte/enero?filter=edad
+        //$args = [
+        // "params" => [123,reporte, enero],
+        // "data" => [],
+        // "query" => [filter => edad]
+        //]
+        $data = file_get_contents('php://input', true) ?
+            json_decode(file_get_contents('php://input', true), true) :
+            [];
 
-        $data = file_get_contents('php://input', true)?
-        json_encode(file_get_contents('php://input', true)):
-        [];
-
-        $controller->$funcion(["params" => $this->parametros,"data" => $data]);
+        $controller->$funcion(["params" => $this->parametros, "data" => $data]);
     }
 }
