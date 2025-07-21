@@ -1,6 +1,5 @@
 <?php
-require_once "src/route.php";
-
+use App\Route;
 
 $route = new Route($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
 

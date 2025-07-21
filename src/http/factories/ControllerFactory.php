@@ -1,10 +1,15 @@
 <?php
+namespace App\http\factories;
 
-include_once "src/http/controllers/CrudController.php";
-include_once "src/http/controllers/ProductoController.php";
-include_once "src/http/controllers/CamperController.php";
-include_once "src/repositories/CamperRepository.php";
-include_once "src/core/DatabasePDO.php";
+
+use App\core\DatabasePDO;
+
+use App\http\controllers\CrudController;
+use App\http\controllers\CamperController;
+use App\repositories\CamperRepository;
+use App\http\controllers\ProductoController;
+
+
 
 class ControllerFactory
 {

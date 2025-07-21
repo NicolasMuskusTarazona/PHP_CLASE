@@ -1,5 +1,7 @@
 <?php 
 
+namespace App\repositories;
+
 interface CamperRepository{
     public function findById(int $id) : ?object ;
     public function getAll() : array ;

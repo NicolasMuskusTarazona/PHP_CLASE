@@ -1,0 +1,11 @@
+# Composer
+composer.phar
+vendor/
+
+# Php Unit
+.phpunit.result.cache
+.phpunit.cache
+phpunit.xml
+
+# Build
+build/

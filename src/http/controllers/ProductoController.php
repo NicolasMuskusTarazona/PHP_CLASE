@@ -1,6 +1,7 @@
 <?php
 
-include_once "CrudController.php";
+namespace App\http\controllers;
+use App\http\controllers\CrudController;
 
 class ProductoController extends CrudController
 {

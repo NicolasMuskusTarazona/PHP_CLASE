@@ -1,6 +1,8 @@
 <?php
-include_once "CrudController.php";
-include_once "src/repositories/CamperRepository.php";
+namespace App\http\controllers;
+
+use App\http\controllers\CrudController;
+use App\repositories\CamperRepository;
 
 class CamperController extends CrudController
 {

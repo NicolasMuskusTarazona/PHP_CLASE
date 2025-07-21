@@ -1,8 +1,10 @@
 <?php
+namespace App\repositories;
+use PDO;
 
-require_once "CamperRepository.php";
+use App\repositories\CamperRepository;
 
-class CamperRepository implements CamperRepository{
+class CamperRepositoryImpl implements CamperRepository{
     private PDO $db;
 
     public function __construct(PDO $db){

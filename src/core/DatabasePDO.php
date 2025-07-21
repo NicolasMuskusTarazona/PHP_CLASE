@@ -1,5 +1,10 @@
 <?php
 
+namespace App\core;
+
+use PDO;
+use PDOException;
+
 // $pdo .... = DatabasePDO::getConnection()
 class DatabasePDO
 {
